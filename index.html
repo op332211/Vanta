@@ -89,7 +89,7 @@ main{flex:1}
 
 .section{padding-top:80px}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:32px;flex-wrap:wrap}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.grid4{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .feat{background:var(--bg);padding:28px 24px 30px;display:flex;flex-direction:column;gap:14px;transition:background .15s}
 .feat:hover{background:var(--panel-2)}
 .feat .ico{width:44px;height:44px;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;color:var(--accent-hi);background:var(--panel-2)}
@@ -231,7 +231,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 32px;font-size:14px}
 }
 /* ---------- themes ---------- */
 [data-theme="sakura"]{
-  --bg:#fff6fa; --panel:#ffffff; --panel-2:#fff0f6; --line:#f6cfe0;
+  --bg:#fdd7e8; --panel:#ffe8f5; --panel-2:#ffd0e0; --line:#f6cfe0;
   --text:#3d1f2d; --dim:#7b5667; --mute:#ab8a9b;
   --accent:#ec4899; --accent-hi:#db2777; --accent-lo:#fcd7e8;
   --accent-hover:#db2777; --accent-soft:rgba(236,72,153,.08); --on-accent:#fff;
@@ -345,6 +345,7 @@ footer{position:relative}
   <symbol id="i-esp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5H3v3M19 2.5h2v3M5 21.5H3v-3M19 21.5h2v-3"/><circle cx="12" cy="6" r="1.8"/><path d="M12 8v6.5M12 10.5l-3.5 2.5M12 10.5l3.5 2.5M12 14.5l-2.5 4.5M12 14.5l2.5 4.5"/></symbol>
   <symbol id="i-rcs" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="21" r="1.3"/><circle cx="12" cy="17.5" r="1.3"/><circle cx="12.4" cy="14" r="1.3"/><circle cx="12" cy="10.6" r="1.3"/><circle cx="9.6" cy="8" r="1.3"/><circle cx="7.2" cy="5.8" r="1.3"/><circle cx="10" cy="4" r="1.3"/><circle cx="13.6" cy="3.6" r="1.3"/><circle cx="17" cy="4.6" r="1.3"/></symbol>
   <symbol id="i-hop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1.5 20.5h21"/><path d="M2.5 20.5C4 12 7.5 12 9 20.5M9 20.5C10.5 12 14 12 15.5 20.5M15.5 20.5C17 12 20.5 12 22 20.5" stroke-dasharray="2 2.4"/><circle cx="5.75" cy="13.6" r="1.4" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-bomb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="16" r="5.5"/><path d="M12 1.5v3M12 5.5s1.5-1 3-1c2.2 0 4 1.8 4 4 0 1.5-.8 2.8-2 3.5"/><path d="M12 10.5v2" stroke-dasharray="1.5 1.5"/><circle cx="12" cy="16" r="1.2" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
   <symbol id="i-down" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v9M4 7.5 8 11.5 12 7.5M2.5 14h11"/></symbol>
   <symbol id="i-exe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 2.5h8l4.5 4.5v14.5H6z"/><path d="M14 2.5V7h4.5"/><path d="M9 12.5h6M9 15.5h6M9 18.5h3.5" stroke-linecap="round"/></symbol>
@@ -452,6 +453,13 @@ footer{position:relative}
           <p>Hold one key and every landing turns into the next jump, timed for you.</p>
           <span class="more">hold · rebindable</span>
         </a>
+        <a class="feat" href="#features">
+          <span class="num">05</span>
+          <span class="ico"><svg><use href="#i-bomb"/></svg></span>
+          <h3>Bomb Timer</h3>
+          <p>Live countdown, distance to bomb, defuse time needed, and whether it's defusable.</p>
+          <span class="more">timer · distance · defuse</span>
+        </a>
       </div>
 
       <div class="strip">
@@ -544,6 +552,25 @@ m4a1_s     = <span class="v">80%</span></pre>
 bunnyhop   = <span class="v">true</span>
 mode       = <span class="v">hold</span>
 key        = <span class="v">SPACE</span></pre>
+    </article>
+
+    <article class="fdetail">
+      <span class="ico"><svg><use href="#i-bomb"/></svg></span>
+      <div>
+        <h3>Bomb Timer</h3>
+        <p>Real-time bomb information overlaid on screen, updated every frame so you never miss the countdown.</p>
+        <ul>
+          <li><b>Live countdown</b> — seconds remaining until detonation.</li>
+          <li><b>Distance to bomb</b> — how far you are from the C4 in meters.</li>
+          <li><b>Defuse viability</b> — shows if you can defuse in time with or without a kit.</li>
+          <li><b>Travel time</b> — calculated at ~6.35 m/s movement speed.</li>
+        </ul>
+      </div>
+<pre class="code"><span class="c">; bomb timer</span>
+enabled    = <span class="v">true</span>
+key        = <span class="v">F3</span>
+show_distance = <span class="v">true</span>
+show_status = <span class="v">true</span></pre>
     </article>
 
     <div class="strip">
@@ -639,6 +666,10 @@ key        = <span class="v">SPACE</span></pre>
         <div class="warn">
           <svg><use href="#i-shield"/></svg>
           <span><b style="color:var(--text)">Runs as administrator.</b> VANTA needs elevated rights to read the game process. Windows will show a UAC prompt on launch — that's expected.</span>
+        </div>
+        <div class="warn" style="background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.2)">
+          <svg style="color:#4ade80"><use href="#i-shield"/></svg>
+          <span><b style="color:var(--text)">No malware.</b> The code is open source on GitHub. No backdoors, no keyloggers, no unwanted activity — only what you see.</span>
         </div>
         <div class="log">
           <h3 style="font-size:15px;margin-bottom:4px">What's in 1.0</h3>
