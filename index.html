@@ -96,6 +96,8 @@ main{flex:1}
 .feat .ico svg{width:24px;height:24px}
 .feat .num{font:12px/1 var(--mono);color:var(--mute)}
 .feat p{font-size:14.5px}
+.feat h3{perspective:1000px;transform-style:preserve-3d;transition:transform 0.1s ease-out}
+.feat:hover h3{transform:rotateX(5deg) rotateY(-5deg) translateZ(20px);text-shadow:0 20px 40px rgba(124,58,237,0.3)}
 .feat .more{margin-top:auto;font:13px/1 var(--mono);color:var(--accent-hi)}
 
 .strip{margin-top:80px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding:32px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
@@ -846,6 +848,26 @@ show_status = <span class="v">true</span></pre>
   }
   document.querySelectorAll('[data-pet]').forEach(function (el) {
     var pet = PETS[el.dataset.pet]; if (pet) el.innerHTML = drawSprite(pet.rows, pet.pal);
+  });
+
+  // Rising Ink effect: 3D text lift on cursor proximity
+  document.querySelectorAll('.feat').forEach(function(card) {
+    var h3 = card.querySelector('h3');
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var centerX = rect.width / 2;
+      var centerY = rect.height / 2;
+      var rotX = (y - centerY) / 10;
+      var rotY = (centerX - x) / 10;
+      h3.style.transform = 'rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) translateZ(25px)';
+      h3.style.textShadow = '0 ' + (20 + Math.abs(rotX)) + 'px ' + (40 + Math.abs(rotY)) + 'px rgba(124,58,237,0.4)';
+    });
+    card.addEventListener('mouseleave', function() {
+      h3.style.transform = 'rotateX(0) rotateY(0) translateZ(0)';
+      h3.style.textShadow = 'none';
+    });
   });
 
   // The character sitting on the settings panel. Each theme has its own.
